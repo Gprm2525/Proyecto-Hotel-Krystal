@@ -1,0 +1,308 @@
+﻿@model ProyectoHotel.Models.Recepcion
+
+@{
+    ViewBag.Title = "SalidaRegistro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    decimal TotalPagar = 0;
+
+    if (Model.oVenta != null)
+    {
+        foreach (ProyectoHotel.Models.Venta v in Model.oVenta)
+        {
+            foreach (ProyectoHotel.Models.DetalleVenta dv in v.oDetalleVenta)
+            {
+                if (v.Estado == "Pendiente")
+                {
+                    TotalPagar += dv.SubTotal;
+                }
+            }
+        }
+    }
+
+    TotalPagar += Model.PrecioRestante;
+}
+
+<input type="hidden" value="@Html.DisplayTextFor(model => model.IdRecepcion)" id="txtidrecepcion" />
+<input type="hidden" value="@Html.DisplayTextFor(model => model.oHabitacion.IdHabitacion)" id="txtidhabitacion" />
+<input type="hidden" value="@TotalPagar" id="txttotal" />
+
+<div class="content2 card shadow-sm ">
+    <div class="scard-body p-3">
+        <h6 class="card-title font-weight-bold text-primary">Resumen de la Habitación</h6>
+        <hr class="mt-1 mb-1" />
+        <div class="form-row">
+            <div class="col-md-3">
+                <label class="form-text font-weight-bold mb-0">Número:</label>
+                <label class="form-text">@Html.DisplayTextFor(model => model.oHabitacion.Numero)</label>
+            </div>
+            <div class="col-md-3">
+                <label class="form-text font-weight-bold mb-0">Detalles:</label>
+                <label class="form-text">@Html.DisplayTextFor(model => model.oHabitacion.Detalle)</label>
+            </div>
+            <div class="col-md-3">
+                <label class="form-text font-weight-bold mb-0">Categoria:</label>
+                <label class="form-text">@Html.DisplayTextFor(model => model.oHabitacion.oCategoria.Descripcion)</label>
+            </div>
+            <div class="col-md-3">
+                <label class="form-text font-weight-bold mb-0">Piso:</label>
+                <label class="form-text">@Html.DisplayTextFor(model => model.oHabitacion.oPiso.Descripcion)</label>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-3">
+                <label class="form-text font-weight-bold mb-0">Cliente:</label>
+                <label class="form-text mb-0">@Html.DisplayTextFor(model => model.oCliente.Nombre) @Html.DisplayTextFor(model => model.oCliente.Apellido)</label>
+            </div>
+            <div class="col-md-3">
+                <label class="form-text font-weight-bold mb-0">Nro. Documento:</label>
+                <label class="form-text mb-0">@Html.DisplayTextFor(model => model.oCliente.Documento)</label>
+            </div>
+            <div class="col-md-3">
+                <label class="form-text font-weight-bold mb-0">Correo:</label>
+                <label class="form-text mb-0">@Html.DisplayTextFor(model => model.oCliente.Correo)</label>
+            </div>
+            <div class="col-md-3">
+                <label class="form-text font-weight-bold mb-0">Fecha Entrada:</label>
+                <label class="form-text mb-0">@Html.DisplayTextFor(model => model.FechaEntradaTexto)</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content2 card shadow-sm mt-2">
+    <div class="card-body p-3">
+        <h6 class="card-title font-weight-bold text-primary">Costo de Hospedaje</h6>
+        <hr class="mt-1 mb-1" />
+        <div class="form-row">
+            <div class="col-md-3">
+                <label class="form-text font-weight-bold">Costo Habitacion:</label>
+                <input type="number" class="form-control form-control-sm" id="validationCustom01" value="@Html.DisplayTextFor(model => model.PrecioInicial)" disabled="disabled">
+
+            </div>
+            <div class="col-md-3">
+                <label class="form-text font-weight-bold">Cantidad Adelantado:</label>
+                <input type="number" class="form-control form-control-sm" id="validationCustom01" value="@Html.DisplayTextFor(model => model.Adelanto)" disabled="disabled">
+            </div>
+            <div class="col-md-3">
+                <label class="form-text font-weight-bold">Cantidad Restante:</label>
+                <input type="number" class="form-control form-control-sm" id="validationCustom01" value="@Html.DisplayTextFor(model => model.PrecioRestante)" disabled="disabled">
+            </div>
+            <div class="col-md-3">
+                <label class="form-text font-weight-bold">Costo por Penalidad:</label>
+                <input type="number" class="form-control form-control-sm" id="txtcostopenalidad" value="0">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow-sm mt-2">
+    <div class="card-body p-3">
+        <h6 class="card-title font-weight-bold text-primary">Servicio a la Habitación</h6>
+        <hr class="mt-1 mb-2" />
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-bordered table-sm">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio Unitario</th>
+                            <th>Estado Venta</th>
+                            <th>Sub Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            if (Model.oVenta != null)
+                            {
+
+                                foreach (var venta in Model.oVenta)
+                                {
+                                    foreach (var detalleventa in venta.oDetalleVenta)
+                                    {
+                                        <tr>
+                                            <td>@detalleventa.oProducto.Nombre</td>
+                                            <td>@detalleventa.Cantidad</td>
+                                            <td>S/ @detalleventa.oProducto.Precio</td>
+                                            <td>
+                                                @{
+                                                    if (venta.Estado == "Cancelado")
+                                                    {
+                                                        <span class="badge badge-success p-2">@venta.Estado</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="badge badge-danger p-2">@venta.Estado</span>
+                                                    }
+                                                }
+
+                                            </td>
+                                            <td>S/ @detalleventa.SubTotal</td>
+                                        </tr>
+                                    }
+                                }
+
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="5">
+                                        <div class="alert alert-secondary border-0" role="alert">
+                                            No se encontraron registros
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            }
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow-sm mt-2">
+
+    <div class="card-body">
+        <div class="row justify-content-end">
+            <div class="col-4">
+                <div class="content2 input-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Total a Pagar S/.</label>
+                    </div>
+                    <input type="text" class="form-control bg-white" id="txttotalpagar" disabled="disabled" value="@TotalPagar">
+                </div>
+            </div>
+            <div class="col-2">
+                <button id="btnfinalizarrecepcion" class="btn btn-success btn-block" type="button">Finalizar Recepción</button>
+                <button id="btnboleta" class="btn btn-primary btn-block" type="button" onclick="htmltopdf()">Imprimir Boleta</button>
+                <button type="button" class="btn btn-dark btn-block" id="btnregresar" onclick="location.href='@Url.Action("Salida","Gestion")'">Regresar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*//Script Boleta de Venta//*@
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+
+@section scripts{
+    <script>
+        $("#txtcostopenalidad").keyup(function () {
+
+            var ct = parseFloat($("#txtcostopenalidad").val() == "" ? "0" : $("#txtcostopenalidad").val() )
+            var total = parseFloat($("#txttotal").val()) + ct;
+            $("#txttotalpagar").val(parseFloat(total).toFixed(2))
+        });
+
+
+        $("#btnfinalizarrecepcion").on("click", function (e) {
+
+            var request = {
+                objeto: {
+                    IdRecepcion: $("#txtidrecepcion").val(),
+                    oHabitacion: { IdHabitacion: $("#txtidhabitacion").val()},
+                    TotalPagadoTexto: $("#txttotalpagar").val(),
+                    CostoPenalidadTexto: $("#txtcostopenalidad").val() == "" ? "0" : $("#txtcostopenalidad").val(),
+                }
+            }
+
+
+            jQuery.ajax({
+                url: '@Url.Action("CerrarRecepcion", "Gestion")',
+                type: "POST",
+                data: JSON.stringify(request),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                    if (data.resultado) {
+                        @*swal("Listo", "La salida fue registrada", "success").then((value) => {
+                                 window.location = '@Url.Action("Salida", "Gestion")';
+                            });*@
+                        swal("Esta seguro de finalizar el registro?", {
+                            buttons: {
+                                cancel: "Run away!",
+                                catch: {
+                                    text: "Throw Pokéball!",
+                                    value: "catch",
+                                },
+                                defeat: true,
+                            },
+                        })
+                            .then((value) => {
+                                switch (value) {
+
+                                    //case "defeat":
+                                    //    swal("Pikachu fainted! You gained 500 XP!");
+                                    //    break;
+
+                                    case "catch":
+                                        swal("Listo!", "Recepción Finalizada Exitosamente!", "success").then((value) => {
+                                 window.location = '@Url.Action("Salida", "Gestion")';
+                            });
+                                        break;
+
+                                    default:
+                                        swal("Lo sentimos", "No se pudo dar salida", "warning");
+                                }
+                            });
+
+                    } else {
+                        swal("Lo sentimos", "No se pudo dar salida", "warning");
+                    }
+                },
+                error: function (error) {
+                    console.log(error)
+                },
+                beforeSend: function () {
+
+                },
+            });
+
+        })
+
+
+    </script>
+
+    @*Boleta de Venta*@
+    <script>
+        function htmltopdf() {
+            const doc = new jsPDF();
+/*            let htmltext = $('.content2').html()*/
+            doc.setFontSize(14);
+            doc.setFont("Segoe UI", "normal");
+            doc.text("******Hotel Kristal******", 10, 5);
+            doc.setFontSize(12);
+            doc.setFont("Segoe UI", "normal");
+            doc.text("Boleta de venta", 12, 10);
+            doc.line(10, 11, 60, 11); // horizontal line
+            doc.setFontSize(12);
+            doc.setFont("Segoe UI", "normal");
+            doc.text("Resumen:", 10, 15);
+            doc.setFontSize(12);
+            doc.setFont("Segoe UI", "normal");
+            doc.text("Cliente: @Html.DisplayTextFor(model => model.oCliente.Nombre) @Html.DisplayTextFor(model => model.oCliente.Apellido)", 10, 20);
+            doc.text("Nro. Documento: @Html.DisplayTextFor(model => model.oCliente.Documento)", 10, 25);
+            doc.text("Numero de Habitación: @Html.DisplayTextFor(model => model.oHabitacion.Numero)", 10, 30);
+            doc.text("Fecha Entrada: @Html.DisplayTextFor(model => model.FechaEntradaTexto)", 10, 35);
+            //doc.fromHTML(htmltext, 10, 5, {
+            //    //        'width': 50
+            //});
+            doc.line(10, 40, 60, 40); // horizontal line
+            doc.setFontSize(12);
+            doc.setFont("Segoe UI", "normal");
+            doc.text("Total a pagar: S/ @TotalPagar soles", 10, 45);
+            doc.setFontSize(12);
+            doc.setFont("Segoe UI", "normal");
+            doc.text("Gracias por su visita", 10, 55);
+            doc.save("BoletadeVenta_'@Html.DisplayTextFor(model => model.oCliente.Documento)'.pdf");
+        }
+    </script>
+
+}
