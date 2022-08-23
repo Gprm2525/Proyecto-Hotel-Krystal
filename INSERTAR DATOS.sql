@@ -37,7 +37,7 @@ insert into PERSONA(TipoDocumento,documento,nombre,apellido,correo,IdTipoPersona
 ('DNI','72949382','Ana','Gamarra Samir','anag@outlook.net',3),
 ('DNI','44893894','Ivan','Castaneda','icastaneda@gmail.com',3),
 ('DNI','34898923','Yanay','Camposano','yanaycampo@gmail.com',3),
-('DNI','78787979','Romulo','Rios','rrios@gmail.com',3),
+('DNI','78787979','Romulo','Rios','rrios@gmail.com',3)
 
 GO
 
@@ -58,21 +58,21 @@ INSERT INTO PISO(Descripcion) VALUES
 GO
 
 INSERT INTO HABITACION(numero,detalle,precio,IdEstadoHabitacion,IdPiso,IdCategoria) values
-('001','WIFI + BAﾑO + TV + CABLE','70',1,1,3),
-('002','WIFI + BAﾑO + TV + CABLE','80',1,1,2),
-('003','BAﾑO + TV + CABLE','60',1,1,3),
-('004','WIFI + BAﾑO + TV + CABLE','80',1,1,2),
-('005','WIFI + BAﾑO','50',1,1,3),
+('001','WIFI + BAﾃ前 + TV + CABLE','70',1,1,3),
+('002','WIFI + BAﾃ前 + TV + CABLE','80',1,1,2),
+('003','BAﾃ前 + TV + CABLE','60',1,1,3),
+('004','WIFI + BAﾃ前 + TV + CABLE','80',1,1,2),
+('005','WIFI + BAﾃ前','50',1,1,3),
 
-('006','WIFI + BAﾑO + TV 4K + CABLE','80',1,2,3),
-('007','WIFI + BAﾑO + TV 4K + CABLE','90',1,2,2),
-('008','WIFI + BAﾑO + TV + CABLE','70',1,2,3),
-('009','WIFI + BAﾑO + TV + CABLE','80',1,2,2),
-('010','WIFI + BAﾑO + TV + CABLE','70',1,2,3),
+('006','WIFI + BAﾃ前 + TV 4K + CABLE','80',1,2,3),
+('007','WIFI + BAﾃ前 + TV 4K + CABLE','90',1,2,2),
+('008','WIFI + BAﾃ前 + TV + CABLE','70',1,2,3),
+('009','WIFI + BAﾃ前 + TV + CABLE','80',1,2,2),
+('010','WIFI + BAﾃ前 + TV + CABLE','70',1,2,3),
 
-('011','WIFI + BAﾑO + TV 4K + CABLE','120',1,3,1),
-('012','WIFI + BAﾑO + TV 4K + CABLE','120',1,3,1),
-('013','WIFI + BAﾑO + TV 4K + CABLE','120',1,3,1),
-('014','WIFI + BAﾑO + TV + CABLE','85',1,3,2),
-('015','WIFI + BAﾑO + TV + CABLE','75',1,3,3)
+('011','WIFI + BAﾃ前 + TV 4K + CABLE','120',1,3,1),
+('012','WIFI + BAﾃ前 + TV 4K + CABLE','120',1,3,1),
+('013','WIFI + BAﾃ前 + TV 4K + CABLE','120',1,3,1),
+('014','WIFI + BAﾃ前 + TV + CABLE','85',1,3,2),
+('015','WIFI + BAﾃ前 + TV + CABLE','75',1,3,3)
 
