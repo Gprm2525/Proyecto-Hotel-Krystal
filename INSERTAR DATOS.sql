@@ -18,11 +18,11 @@ insert into TIPO_PERSONA(IdTipoPersona, Descripcion) values
 go
 
 insert into PERSONA(TipoDocumento,documento,nombre,apellido,correo,clave,IdTipoPersona) values
-('DNI','42369871','Giorgio','Ruiton','gprm@gmail.com','12345',1), --12345
-('DNI','43534342','Fiorella','Bruno','fiorella@gmail.com','2468',2), --2468
-('DNI','46587193','Mercedes','Rocha','mrocha@gmail.com','13579',2), --13579
-('DNI','42587944','Briyan','Santiago','bsantiago@gmail.com','12345',2), --12345
-('DNI','45987105','Rodrigo','Salazar','rodrigo@gmail.com','01234',2) --01234
+('DNI','42369871','Giorgio','Ruiton','gprm@gmail.com','ebe29d1810d6821238c13a938a807d72b035ea7f065f418eb8af2202ff4a1c8a',1),
+('DNI','43534342','Fiorella','Bruno','fiorella@gmail.com','18f28e88e2f79ce9255942b368e3bf787393c8a1455d1e4460e1f6ad9580e47b',2),
+('DNI','46587193','Mercedes','Rocha','mrocha@gmail.com','84b6e9f423ea24a043a5cb8f9549c6f39a621c48f02bd9197c5e8f09fe7b29da',2),
+('DNI','42587944','Briyan','Santiago','bsantiago@gmail.com','f02497250e0b2241c3b58dee937ee9d919e8f8fcbdf7c8d02dad04b625eeef44',2),
+('DNI','45987105','Rodrigo','Salazar','rodrigo@gmail.com','e70176c68b1b8248c673106ba7921b159db97cfba27c647e05e4ea906e5f6bbb',2)
 
 GO
 
