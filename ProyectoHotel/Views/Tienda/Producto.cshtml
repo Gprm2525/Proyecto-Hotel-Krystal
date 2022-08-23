@@ -182,7 +182,7 @@
                     "columns": [
                         { "data": "Nombre" },
                         { "data": "Detalle" },
-                        { "data": "Precio" },
+                        { "data": "Precio",render: $.fn.dataTable.render.number(',', '.', 2, 'S/ ') }, //agregando simbolo de soles },
                         { "data": "Cantidad" },
                         {
                             "data": "Estado", "render": function (data) {

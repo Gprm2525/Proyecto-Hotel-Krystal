@@ -54,17 +54,20 @@
         <hr class="mt-1 mb-1" />
         <div class="form-row">
             <div class="col-md-3">
+                <div style="position:absolute; left:15px; top:39px">S/. </div>
                 <label class="form-text font-weight-bold">Costo Habitacion:</label>
-                <input type="number" class="form-control form-control-sm" id="validationCustom01" value="@Html.DisplayTextFor(model => model.PrecioInicial)" disabled="disabled">
+                <input type="number" class="form-control form-control-sm" style='padding-left:35px;' id="validationCustom01" value="@Html.DisplayTextFor(model => model.PrecioInicial)" disabled="disabled">
 
             </div>
             <div class="col-md-3">
+                <div style="position:absolute; left:15px; top:39px">S/. </div>
                 <label class="form-text font-weight-bold">Cantidad Adelantado:</label>
-                <input type="number" class="form-control form-control-sm" id="validationCustom01" value="@Html.DisplayTextFor(model => model.Adelanto)" disabled="disabled">
+                <input type="number" class="form-control form-control-sm" style='padding-left:35px;' id="validationCustom01" value="@Html.DisplayTextFor(model => model.Adelanto)" disabled="disabled">
             </div>
             <div class="col-md-3">
+                <div style="position:absolute; left:15px; top:39px">S/. </div>
                 <label class="form-text font-weight-bold">Cantidad Restante:</label>
-                <input type="number" class="form-control form-control-sm" id="validationCustom01" value="@Html.DisplayTextFor(model => model.PrecioRestante)" disabled="disabled">
+                <input type="number" class="form-control form-control-sm" style='padding-left:35px;' id="validationCustom01" value="@Html.DisplayTextFor(model => model.PrecioRestante)" disabled="disabled">
             </div>
             <div class="col-md-3">
                 <label class="form-text font-weight-bold">Fecha Salida:</label>
@@ -102,7 +105,7 @@
                                         <tr>
                                             <td>@detalleventa.oProducto.Nombre</td>
                                             <td>@detalleventa.Cantidad</td>
-                                            <td>@detalleventa.oProducto.Precio</td>
+                                            <td>S/ @detalleventa.oProducto.Precio</td>
                                             <td>
                                                 @{
                                                     if (venta.Estado == "Cancelado")
@@ -116,7 +119,7 @@
                                                 }
 
                                             </td>
-                                            <td>@detalleventa.SubTotal</td>
+                                            <td>S/. @detalleventa.SubTotal</td>
                                         </tr>
                                     }
                                 }

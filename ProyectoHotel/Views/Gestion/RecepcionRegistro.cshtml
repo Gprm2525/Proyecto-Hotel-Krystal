@@ -95,8 +95,14 @@
                 <div class="form-row">
                     <div class="form-group col-md-6 mb-2">
                         <label for="inputEmail4">Precio:</label>
-                        <input type="text" class="form-control" id="txtprecio" disabled="disabled" value="@Html.DisplayTextFor(model => model.Precio)">
-                        <input type="hidden" class="form-control" id="txtpreciobase" disabled="disabled" value="@Html.DisplayTextFor(model => model.Precio)">
+                        <div class='field'>
+                            <div style="position:relative">
+                                @* agrgegando simbolo de moneda a input *@
+                                <div style="position:absolute; left:15px; top:7px">S/. </div> 
+                                <input type="text" class="form-control" style='padding-left:35px;' id="txtprecio" disabled="disabled" value="@Html.DisplayTextFor(model => model.Precio)">
+                                <input type="hidden" class="form-control" style='padding-left:35px;' id="txtpreciobase" disabled="disabled" value="@Html.DisplayTextFor(model => model.Precio)">
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group col-md-6 mb-2">
                         <label for="inputPassword4">Adelanto:</label>

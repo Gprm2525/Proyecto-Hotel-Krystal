@@ -229,7 +229,42 @@
             </div>
         </div>
     </div>
+
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+<script>
+    //Modal de Saludo//
+    Swal.fire({
+        title: 'Bienvenido @(objeto.Nombre + " " + objeto.Apellido)',
+        icon: 'info',
+        padding: '1rem',
+        buttons: false,
+        backdrop: true,
+        timer: 2500,
+        timerProgressBar: true,
+        didOpen: undefined
+    });
+
+    //$(document).ready(function () {
+
+    //    var swal_alert = localStorage.getItem("alert");
+
+    //    if (swal_alert != 1) {
+    //        swal({
+    //            title: "District Closed",
+    //            text: "Severe snow is causing major accidents and is unsafe for our students and staff. The district is closed including schools & offices, updates will be posted here. This popup closes fifteen (15) seconds after loading the page or clicking the status button.",
+    //            timer: 15000,
+    //            type: "error",
+    //            showConfirmButton: false
+    //        });
+    //    }
+
+    //    localStorage.setItem("alert", "1");
+
+    //});
+
+
+</script>

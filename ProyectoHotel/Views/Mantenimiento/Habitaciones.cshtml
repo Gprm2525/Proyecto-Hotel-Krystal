@@ -226,7 +226,7 @@
                 "columns": [
                     { "data": "Numero" },
                     { "data": "Detalle" },
-                    { "data": "Precio" },
+                    { "data": "Precio", render: $.fn.dataTable.render.number(',', '.', 2, 'S/ ') }, //agregando simbolo de soles
                     {
                         "data": "oCategoria", render: function (data) {
                             return data.Descripcion
