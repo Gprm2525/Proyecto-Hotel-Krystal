@@ -237,16 +237,25 @@
 
 <script>
     //Modal de Saludo//
-    Swal.fire({
+    @*Swal.fire({
         title: 'Bienvenido @(objeto.Nombre + " " + objeto.Apellido)',
-        icon: 'info',
-        padding: '1rem',
-        buttons: false,
+        icon: 'success',
+        /*padding: '1rem',*/
+        /*buttons: false,*/
         backdrop: true,
         timer: 2500,
         timerProgressBar: true,
         didOpen: undefined
-    });
+    });*@
+
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Bienvenido' + '<br>' + '@(objeto.Nombre + " " + objeto.Apellido)',
+        showConfirmButton: false,
+        timer: 2500,
+        timerProgressBar: true
+    })
 
     //$(document).ready(function () {
 
