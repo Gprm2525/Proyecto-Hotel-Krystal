@@ -18,7 +18,7 @@ namespace ProyectoHotel.Controllers
 
             return View();
         }
-
+        //hola
         // GET: Gestion
         public ActionResult RecepcionRegistro(int idhabitacion)
         {
