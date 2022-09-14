@@ -40,7 +40,7 @@
                                 <th>Apellido</th>
                                 <th>Correo</th>
                                 <th>Estado</th>
-                                <th></th>
+                                <th>Acción</th>
                             </tr>
                         </tfoot>
                         <tbody></tbody>
@@ -172,10 +172,10 @@
                             return $("<button>").addClass("btn btn-primary btn-editar btn-sm").append(
                                 $("<i>").addClass("fas fa-pen")
                             ).attr({ "data-informacion": JSON.stringify(row) })[0].outerHTML
-                            +
-                            $("<button>").addClass("btn btn-danger btn-eliminar btn-sm ml-2").append(
-                                $("<i>").addClass("fas fa-trash")
-                            ).attr({ "data-informacion": JSON.stringify(row) })[0].outerHTML;
+                            //+
+                            //$("<button>").addClass("btn btn-danger btn-eliminar btn-sm ml-2").append(
+                            //    $("<i>").addClass("fas fa-trash")
+                            //).attr({ "data-informacion": JSON.stringify(row) })[0].outerHTML;
 
                         },
                         "orderable": false,

@@ -256,7 +256,8 @@ figure {
 }
 
 img, svg {
-    vertical-align: middle
+    vertical-align: middle;
+    height: 100%;
 }
 
 table {

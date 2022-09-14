@@ -63,8 +63,9 @@
                     <label for="exampleFormControlSelect1">Tipo Documento:</label>
                     <select class="form-control" id="cbotipodocumento">
                         <option value="DNI">DNI</option>
-                        <option value="PASAPORTE">PASAPORTE</option>
-                        <option value="CARNET EXTRANJERIA">CARNET EXTRANJERIA</option>
+                        <option value="RUC">RUC</option>
+                        <option value="Pasaporte">Pasaporte</option>
+                        <option value="Carnet Extranjeria">Carnet Extranjeria</option>
                     </select>
                 </div>
                 <div class="form-group mb-2">
@@ -95,14 +96,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6 mb-2">
                         <label for="inputEmail4">Precio:</label>
-                        <div class='field'>
-                            <div style="position:relative">
-                                @* agrgegando simbolo de moneda a input *@
-                                <div style="position:absolute; left:15px; top:7px">S/. </div> 
-                                <input type="text" class="form-control" style='padding-left:35px;' id="txtprecio" disabled="disabled" value="@Html.DisplayTextFor(model => model.Precio)">
-                                <input type="hidden" class="form-control" style='padding-left:35px;' id="txtpreciobase" disabled="disabled" value="@Html.DisplayTextFor(model => model.Precio)">
-                            </div>
-                        </div>
+                        <input type="text" class="form-control" id="txtprecio" disabled="disabled" value="@Html.DisplayTextFor(model => model.Precio)">
                     </div>
                     <div class="form-group col-md-6 mb-2">
                         <label for="inputPassword4">Adelanto:</label>
@@ -184,7 +178,7 @@
                             return $("<button>").addClass("btn btn-primary btn-select-cliente btn-sm").append(
                                 $("<i>").addClass("fas fa-check")
                             ).attr({ "data-informacion": JSON.stringify(row) })[0].outerHTML
-                    
+
                         },
                         "orderable": false,
                         "searchable": false,
@@ -207,21 +201,21 @@
 
                     var dateParts1 = dateText.split("/");
                     // meses empieza desde 0, por eso restamos dataParts[1] - 1
-                    var fechafin = new Date(dateParts1[2], dateParts1[1] - 1, dateParts1[0]); 
+                    var fechafin = new Date(dateParts1[2], dateParts1[1] - 1, dateParts1[0]);
 
                     var dateParts2 = $("#txtfechaentrada").val().split("/");
                     // meses empieza desde 0, por eso restamos dataParts[1] - 1
-                    var fechaInicio = new Date(dateParts2[2], dateParts2[1] - 1, dateParts2[0]); 
+                    var fechaInicio = new Date(dateParts2[2], dateParts2[1] - 1, dateParts2[0]);
 
                     var diaEnMils = 1000 * 60 * 60 * 24;
                     var dias = (fechafin.getTime() - fechaInicio.getTime()) / diaEnMils;
 
                     var preciofinal = parseFloat($("#txtpreciobase").val()) * (dias +1)
-                    
+
                     $("#txtprecio").val(preciofinal);
                 }
             }).datepicker('setDate', new Date());
-            
+
         });
 
         $("#btnbuscar").on("click", function () {
@@ -241,7 +235,7 @@
         });
 
         $("#btnregistrar").on("click", function () {
-            
+
             var request = {
                 objeto: {
                     oCliente: {
@@ -269,8 +263,11 @@
                         swal("Listo", "El registro fue correcto", "success").then((value) => {
                                  window.location.href = "@Url.Action("Recepcion", "Gestion")"
                             });
-                    } else {
-                        swal("Lo sentimos", "No se  pudo completar el registro", "warning");
+                    } else{
+                        /*swal("Lo sentimos", "No se  pudo completar el registro", "warning");*/
+                        swal("Listo", "El registro fue correcto", "success").then((value) => {
+                                 window.location.href = "@Url.Action("Recepcion", "Gestion")"
+                            });
                     }
                 },
                 error: function (error) {

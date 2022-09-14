@@ -106,7 +106,7 @@ namespace ProyectoHotel.Logica
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("select IdProducto,Nombre,Detalle,Precio,Cantidad,Estado from PRODUCTO", oConexion);
+                    SqlCommand cmd = new SqlCommand("select IdProducto,Codigo,ValorCodigo,Nombre,Detalle,Precio,Cantidad,Estado from PRODUCTO", oConexion);
                     cmd.CommandType = CommandType.Text;
 
                     oConexion.Open();
@@ -117,6 +117,8 @@ namespace ProyectoHotel.Logica
                             Lista.Add(new Producto()
                             {
                                 IdProducto = Convert.ToInt32(dr["IdProducto"]),
+                                Codigo = dr["Codigo"].ToString(),
+                                ValorCodigo = Convert.ToInt32(dr["ValorCodigo"].ToString()),
                                 Nombre = dr["Nombre"].ToString(),
                                 Detalle = dr["Detalle"].ToString(),
                                 Precio = Convert.ToDecimal(dr["Precio"].ToString()),

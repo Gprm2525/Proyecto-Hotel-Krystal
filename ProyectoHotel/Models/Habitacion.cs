@@ -9,6 +9,7 @@ namespace ProyectoHotel.Models
     {
         public int IdHabitacion { get; set; }
         public string Numero { get; set; }
+        public int ValorNumero{ get; set; }
         public string Detalle { get; set; }
         public decimal Precio { get; set; }
         public string PrecioTexto { get; set; }
