@@ -36,6 +36,7 @@ go
 CREATE TABLE  HABITACION(
 IdHabitacion int primary key identity,
 Numero varchar(50),
+ValorNumero int,
 Detalle varchar(100),
 Precio decimal(10,2) not null,
 IdEstadoHabitacion int references ESTADO_HABITACION(IdEstadoHabitacion),
@@ -50,6 +51,8 @@ go
 
 create table PRODUCTO(
 IdProducto int primary key identity,
+Codigo varchar(100),
+ValorCodigo int,
 Nombre varchar(50),
 Detalle varchar(100),
 Precio decimal(10,2) not null,
