@@ -93,7 +93,6 @@ GO
 
 --PROCEDIMIENTO PARA GUARDAR HABITACION
 create PROC sp_RegistrarHabitacion(
-@Numero varchar(50),
 @Detalle varchar(100),
 @Precio decimal(10,2),
 @IdPiso varchar(50),
@@ -102,10 +101,14 @@ create PROC sp_RegistrarHabitacion(
 )as
 begin
 	SET @Resultado = 1
-	IF NOT EXISTS (SELECT * FROM HABITACION WHERE Numero = @Numero)
+	IF NOT EXISTS (SELECT * FROM HABITACION WHERE Detalle = @Detalle)
 
-		insert into HABITACION(Numero,Detalle,Precio,IdPiso,IdCategoria,IdEstadoHabitacion) values (
-		@Numero,@Detalle,@Precio,@IdPiso,@IdCategoria,1
+		--insert into HABITACION(Numero,ValorNumero,Detalle,Precio,IdPiso,IdCategoria,IdEstadoHabitacion) values (
+		--@Numero,@Detalle,@Precio,@IdPiso,@IdCategoria,1
+		insert into HABITACION(Numero,ValorNumero,Detalle,Precio,IdPiso,IdCategoria,IdEstadoHabitacion) values (
+		RIGHT('000' + convert(varchar(max),(select isnull(max(ValorNumero),0) 
+		+ 1 from HABITACION)),3),(select isnull(max(ValorNumero),0) 
+		+ 1 from HABITACION),@Detalle,@Precio,@IdPiso,@IdCategoria,1
 		)
 	ELSE
 		SET @Resultado = 0
@@ -118,7 +121,6 @@ go
 --PROCEDIMIENTO PARA MODIFICAR HABITACION
 create procedure sp_ModificarHabitacion(
 @IdHabitacion int,
-@Numero varchar(50),
 @Detalle varchar(100),
 @Precio decimal(10,2),
 @IdPiso varchar(50),
@@ -129,10 +131,9 @@ create procedure sp_ModificarHabitacion(
 as
 begin
 	SET @Resultado = 1
-	IF NOT EXISTS (SELECT * FROM HABITACION WHERE Numero =@Numero and IdHabitacion != @IdHabitacion)
+	IF NOT EXISTS (SELECT * FROM HABITACION WHERE Detalle =@Detalle and IdHabitacion != @IdHabitacion)
 		
 		update HABITACION set 
-		Numero = @Numero,
 		Detalle = @Detalle,
 		Precio = @Precio,
 		IdPiso = @IdPiso,
@@ -142,6 +143,15 @@ begin
 	ELSE
 		SET @Resultado = 0
 
+end
+
+GO
+
+--PROCEMIENTO PARA OBTENER PRODUCTO
+CREATE PROC usp_ObtenerProductos
+as
+begin
+ select IdProducto,Codigo,ValorCodigo,Nombre,Detalle,Precio,Cantidad
 end
 
 GO
@@ -157,10 +167,16 @@ CREATE PROC sp_RegistrarProducto(
 )as
 begin
 	SET @Resultado = 1
-	IF NOT EXISTS (SELECT * FROM PRODUCTO WHERE Nombre = @Nombre)
+	IF NOT EXISTS (SELECT * FROM PRODUCTO WHERE rtrim(ltrim(Nombre)) = rtrim(ltrim(@Nombre)))
 
-		insert into PRODUCTO(Nombre,Detalle,Precio,Cantidad) values (
-		@Nombre,@Detalle,@Precio,@Cantidad
+		--insert into PRODUCTO(Codigo,ValorCodigo,Nombre,Detalle,Precio,Cantidad) values (
+		--@Nombre,@Detalle,@Precio,@Cantidad
+		
+		insert into PRODUCTO(Codigo,ValorCodigo,Nombre,Detalle,Precio,Cantidad) values (
+		RIGHT('000' + convert(varchar(max),(select isnull(max(ValorCodigo),0) 
+		+ 1 from PRODUCTO)),3),(select isnull(max(ValorCodigo),0) 
+		+ 1 from PRODUCTO),@Nombre,@Detalle,@Precio,@Cantidad
+
 		)
 	ELSE
 		SET @Resultado = 0
@@ -183,7 +199,7 @@ create procedure sp_ModificarProducto(
 as
 begin
 	SET @Resultado = 1
-	IF NOT EXISTS (SELECT * FROM PRODUCTO WHERE Nombre =@Nombre and IdProducto != @IdProducto)
+	IF NOT EXISTS (SELECT * FROM PRODUCTO WHERE rtrim(ltrim(Nombre)) = rtrim(ltrim(@Nombre)) and IdProducto != @IdProducto)
 		
 		update PRODUCTO set 
 		Nombre = @Nombre,

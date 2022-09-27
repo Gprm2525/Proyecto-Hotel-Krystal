@@ -43,8 +43,8 @@ namespace ProyectoHotel.Logica
                     cmd.Parameters.AddWithValue("Numero", oHabitacion.Numero);
                     cmd.Parameters.AddWithValue("Detalle", oHabitacion.Detalle);
                     cmd.Parameters.AddWithValue("Precio", Convert.ToDecimal(oHabitacion.PrecioTexto,new CultureInfo("es-PE")));
-                    cmd.Parameters.AddWithValue("IdPiso", oHabitacion.oPiso.IdPiso);
                     cmd.Parameters.AddWithValue("IdCategoria", oHabitacion.oCategoria.IdCategoria);
+                    cmd.Parameters.AddWithValue("IdPiso", oHabitacion.oPiso.IdPiso);
                     cmd.Parameters.Add("Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -75,8 +75,8 @@ namespace ProyectoHotel.Logica
                     cmd.Parameters.AddWithValue("Numero", oHabitacion.Numero);
                     cmd.Parameters.AddWithValue("Detalle", oHabitacion.Detalle);
                     cmd.Parameters.AddWithValue("Precio", Convert.ToDecimal(oHabitacion.PrecioTexto, new CultureInfo("es-PE")));
-                    cmd.Parameters.AddWithValue("IdPiso", oHabitacion.oPiso.IdPiso);
                     cmd.Parameters.AddWithValue("IdCategoria", oHabitacion.oCategoria.IdCategoria);
+                    cmd.Parameters.AddWithValue("IdPiso", oHabitacion.oPiso.IdPiso);
                     cmd.Parameters.AddWithValue("Estado", oHabitacion.Estado);
                     cmd.Parameters.Add("Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
 
@@ -109,11 +109,11 @@ namespace ProyectoHotel.Logica
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("select h.IdHabitacion,h.Numero,h.Detalle,h.Precio,p.IdPiso,p.Descripcion[DescripcionPiso],c.IdCategoria,c.Descripcion[DescripcionCategoria],h.Estado,");
+                    query.AppendLine("select h.IdHabitacion,h.Numero,h.ValorNumero,h.Detalle,h.Precio,p.IdPiso,p.Descripcion[DescripcionPiso],c.IdCategoria,c.Descripcion[DescripcionCategoria],h.Estado,");
                     query.AppendLine("eh.IdEstadoHabitacion,eh.Descripcion[DescripcionEstadoHabitacion]");
                     query.AppendLine("from habitacion h");
-                    query.AppendLine("inner join PISO p on p.IdPiso = h.IdPiso");
                     query.AppendLine("inner join CATEGORIA c on c.IdCategoria = h.IdCategoria");
+                    query.AppendLine("inner join PISO p on p.IdPiso = h.IdPiso");
                     query.AppendLine("inner join ESTADO_HABITACION eh on eh.IdEstadoHabitacion = h.IdEstadoHabitacion");
 
                     SqlCommand cmd = new SqlCommand(query.ToString(), oConexion);
@@ -128,10 +128,11 @@ namespace ProyectoHotel.Logica
                             {
                                 IdHabitacion = Convert.ToInt32(dr["IdHabitacion"]),
                                 Numero = dr["Numero"].ToString(),
+                                ValorNumero = Convert.ToInt32(dr["ValorNumero"].ToString()),
                                 Detalle = dr["Detalle"].ToString(),
                                 Precio = Convert.ToDecimal(dr["Precio"].ToString()),
-                                oPiso = new Piso() { IdPiso = Convert.ToInt32(dr["IdPiso"]), Descripcion = dr["DescripcionPiso"].ToString() },
                                 oCategoria = new Categoria() { IdCategoria = Convert.ToInt32(dr["IdCategoria"]), Descripcion = dr["DescripcionCategoria"].ToString() },
+                                oPiso = new Piso() { IdPiso = Convert.ToInt32(dr["IdPiso"]), Descripcion = dr["DescripcionPiso"].ToString() },
                                 oEstadoHabitacion = new EstadoHabitacion() { IdEstadoHabitacion = Convert.ToInt32(dr["IdEstadoHabitacion"]) , Descripcion = dr["DescripcionEstadoHabitacion"].ToString() },
                                 Estado = Convert.ToBoolean(dr["Estado"])
                             });

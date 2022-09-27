@@ -36,6 +36,7 @@ go
 CREATE TABLE  HABITACION(
 IdHabitacion int primary key identity,
 Numero varchar(50),
+ValorNumero int,
 Detalle varchar(100),
 Precio decimal(10,2) not null,
 IdEstadoHabitacion int references ESTADO_HABITACION(IdEstadoHabitacion),
@@ -50,6 +51,8 @@ go
 
 create table PRODUCTO(
 IdProducto int primary key identity,
+Codigo varchar(100),
+ValorCodigo int,
 Nombre varchar(50),
 Detalle varchar(100),
 Precio decimal(10,2) not null,
@@ -118,4 +121,16 @@ IdVenta int references VENTA(IdVenta),
 IdProducto int references PRODUCTO(IdProducto),
 Cantidad int,
 SubTotal decimal(10,2)
+)
+
+go
+
+create table PRERECEPCION(
+IdEvento int primary key identity,
+Tema varchar(100) not null,
+Descripcion varchar(200) not null,
+FechaEntrada datetime default getdate(),
+FechaSalida datetime,
+ColorTema varchar(100) not null,
+IsFullDay bit
 )

@@ -7157,7 +7157,8 @@ button.bg-dark:hover {
 }
 
 .border-primary {
-    border-color: #4e73df !important;
+    /*border-color: #4e73df !important;*/
+    border-color: #ffffff !important;
 }
 
 .border-secondary {

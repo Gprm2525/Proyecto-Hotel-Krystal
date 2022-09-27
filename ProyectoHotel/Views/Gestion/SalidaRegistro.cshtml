@@ -231,12 +231,12 @@
                             });*@
                         swal("Esta seguro de finalizar el registro?", {
                             buttons: {
-                                cancel: "Run away!",
+                                cancel: "Cancelar",
                                 catch: {
-                                    text: "Throw Pokéball!",
+                                    text: "Terminar la Recepción!",
                                     value: "catch",
                                 },
-                                defeat: true,
+                                defeat: false,
                             },
                         })
                             .then((value) => {

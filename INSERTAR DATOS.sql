@@ -3,9 +3,9 @@ USE PROYECTOCERTIFICADOR
 GO
 
 insert into ESTADO_HABITACION(IdEstadoHabitacion,Descripcion) values
-(1,'LIBRE'),
-(2,'OCUPADO'),
-(3,'LIMPIEZA')
+(1,'Libre'),
+(2,'Ocupado'),
+(3,'Limpieza')
 
 
 go
@@ -41,38 +41,216 @@ insert into PERSONA(TipoDocumento,documento,nombre,apellido,correo,IdTipoPersona
 
 GO
 
-GO
 INSERT INTO CATEGORIA(Descripcion) VALUES
 ('Matrimonial'),
 ('Doble'),
-('Triple'),
 ('Individual')
 
 GO
 
 INSERT INTO PISO(Descripcion) VALUES
-('PRIMERO'),
-('SEGUNDO'),
-('TERCERO')
+('Primero'),
+('Segundo'),
+('Tercero')
 
 GO
 
-INSERT INTO HABITACION(numero,detalle,precio,IdEstadoHabitacion,IdPiso,IdCategoria) values
-('001','WIFI + BAÑO + TV + CABLE','70',1,1,3),
-('002','WIFI + BAÑO + TV + CABLE','80',1,1,2),
-('003','BAÑO + TV + CABLE','60',1,1,3),
-('004','WIFI + BAÑO + TV + CABLE','80',1,1,2),
-('005','WIFI + BAÑO','50',1,1,3),
+INSERT INTO HABITACION(Numero,Valornumero,Detalle,Precio,IdEstadoHabitacion,IdPiso,IdCategoria)
+--INSERT INTO HABITACION(numero,detalle,precio,IdEstadoHabitacion,IdPiso,IdCategoria) values
+--Primer Piso
+--REGISTRO EN TABLA HABITACION
+values
+(
+RIGHT('000' + convert(varchar(max),(select isnull(max(ValorNumero),0) + 1 from HABITACION)),3),
+(select isnull(max(ValorNumero),0) + 1 from HABITACION),
+'WIFI + BAÑO + TV + CABLE','70',1,1,
+(select top 3 IdCategoria from CATEGORIA where Descripcion = 'Individual')
+)
 
-('006','WIFI + BAÑO + TV 4K + CABLE','80',1,2,3),
-('007','WIFI + BAÑO + TV 4K + CABLE','90',1,2,2),
-('008','WIFI + BAÑO + TV + CABLE','70',1,2,3),
-('009','WIFI + BAÑO + TV + CABLE','80',1,2,2),
-('010','WIFI + BAÑO + TV + CABLE','70',1,2,3),
+GO
+--REGISTRO EN TABLA HABITACION
+INSERT INTO HABITACION(Numero,Valornumero,Detalle,Precio,IdEstadoHabitacion,IdPiso,IdCategoria)
+values
+(
+RIGHT('000' + convert(varchar(max),(select isnull(max(ValorNumero),0) + 1 from HABITACION)),3),
+(select isnull(max(ValorNumero),0) + 1 from HABITACION),
+'WIFI + BAÑO + TV + CABLE','80',1,1,
+(select top 2 IdCategoria from CATEGORIA where Descripcion = 'Doble')
+)
 
-('011','WIFI + BAÑO + TV 4K + CABLE','120',1,3,1),
-('012','WIFI + BAÑO + TV 4K + CABLE','120',1,3,1),
-('013','WIFI + BAÑO + TV 4K + CABLE','120',1,3,1),
-('014','WIFI + BAÑO + TV + CABLE','85',1,3,2),
-('015','WIFI + BAÑO + TV + CABLE','75',1,3,3)
+GO
 
+--REGISTRO EN TABLA HABITACION
+INSERT INTO HABITACION(Numero,Valornumero,Detalle,Precio,IdEstadoHabitacion,IdPiso,IdCategoria)
+values
+(
+RIGHT('000' + convert(varchar(max),(select isnull(max(ValorNumero),0) + 1 from HABITACION)),3),
+(select isnull(max(ValorNumero),0) + 1 from HABITACION),
+'BAÑO + TV + CABLE','60',1,1,
+(select top 3 IdCategoria from CATEGORIA where Descripcion = 'Individual')
+)
+
+GO
+
+--REGISTRO EN TABLA HABITACION
+INSERT INTO HABITACION(Numero,Valornumero,Detalle,Precio,IdEstadoHabitacion,IdPiso,IdCategoria)
+values
+(
+RIGHT('000' + convert(varchar(max),(select isnull(max(ValorNumero),0) + 1 from HABITACION)),3),
+(select isnull(max(ValorNumero),0) + 1 from HABITACION),
+'WIFI + BAÑO + TV + CABLE','80',1,1,
+(select top 2 IdCategoria from CATEGORIA where Descripcion = 'Doble')
+)
+
+GO
+--REGISTRO EN TABLA HABITACION
+INSERT INTO HABITACION(Numero,Valornumero,Detalle,Precio,IdEstadoHabitacion,IdPiso,IdCategoria)
+values
+(
+RIGHT('000' + convert(varchar(max),(select isnull(max(ValorNumero),0) + 1 from HABITACION)),3),
+(select isnull(max(ValorNumero),0) + 1 from HABITACION),
+'WIFI + BAÑO','50',1,1,
+(select top 3 IdCategoria from CATEGORIA where Descripcion = 'Individual')
+)
+
+GO
+
+--Segundo Piso
+--REGISTRO EN TABLA HABITACION
+INSERT INTO HABITACION(Numero,Valornumero,Detalle,Precio,IdEstadoHabitacion,IdPiso,IdCategoria)
+values
+(
+RIGHT('000' + convert(varchar(max),(select isnull(max(ValorNumero),0) + 1 from HABITACION)),3),
+(select isnull(max(ValorNumero),0) + 1 from HABITACION),
+'WIFI + BAÑO + TV 4K + CABLE','80',1,2,
+(select top 3 IdCategoria from CATEGORIA where Descripcion = 'Individual')
+)
+
+GO
+
+--REGISTRO EN TABLA HABITACION
+INSERT INTO HABITACION(Numero,Valornumero,Detalle,Precio,IdEstadoHabitacion,IdPiso,IdCategoria)
+values
+(
+RIGHT('000' + convert(varchar(max),(select isnull(max(ValorNumero),0) + 1 from HABITACION)),3),
+(select isnull(max(ValorNumero),0) + 1 from HABITACION),
+'WIFI + BAÑO + TV 4K + CABLE','90',1,2,
+(select top 2 IdCategoria from CATEGORIA where Descripcion = 'Doble')
+)
+
+GO
+
+--REGISTRO EN TABLA HABITACION
+INSERT INTO HABITACION(Numero,Valornumero,Detalle,Precio,IdEstadoHabitacion,IdPiso,IdCategoria)
+values
+(
+RIGHT('000' + convert(varchar(max),(select isnull(max(ValorNumero),0) + 1 from HABITACION)),3),
+(select isnull(max(ValorNumero),0) + 1 from HABITACION),
+'WIFI + BAÑO + TV + CABLE','70',1,2,
+(select top 3 IdCategoria from CATEGORIA where Descripcion = 'Individual')
+)
+
+GO
+
+--REGISTRO EN TABLA HABITACION
+INSERT INTO HABITACION(Numero,Valornumero,Detalle,Precio,IdEstadoHabitacion,IdPiso,IdCategoria)
+values
+(
+RIGHT('000' + convert(varchar(max),(select isnull(max(ValorNumero),0) + 1 from HABITACION)),3),
+(select isnull(max(ValorNumero),0) + 1 from HABITACION),
+'WIFI + BAÑO + TV 4K + CABLE','80',1,2,
+(select top 3 IdCategoria from CATEGORIA where Descripcion = 'Individual')
+)
+
+GO
+
+--REGISTRO EN TABLA HABITACION
+INSERT INTO HABITACION(Numero,Valornumero,Detalle,Precio,IdEstadoHabitacion,IdPiso,IdCategoria)
+values
+(
+RIGHT('000' + convert(varchar(max),(select isnull(max(ValorNumero),0) + 1 from HABITACION)),3),
+(select isnull(max(ValorNumero),0) + 1 from HABITACION),
+'WIFI + BAÑO + TV + CABLE','70',1,2,
+(select top 2 IdCategoria from CATEGORIA where Descripcion = 'Doble')
+)
+GO
+
+--Tercer Piso
+--REGISTRO EN TABLA HABITACION
+INSERT INTO HABITACION(Numero,Valornumero,Detalle,Precio,IdEstadoHabitacion,IdPiso,IdCategoria)
+values
+(
+RIGHT('000' + convert(varchar(max),(select isnull(max(ValorNumero),0) + 1 from HABITACION)),3),
+(select isnull(max(ValorNumero),0) + 1 from HABITACION),
+'WIFI + BAÑO + TV 4K + CABLE','120',1,3,
+(select top 1 IdCategoria from CATEGORIA where Descripcion = 'Matrimonial')
+)
+
+
+GO
+
+--REGISTRO EN TABLA HABITACION
+INSERT INTO HABITACION(Numero,Valornumero,Detalle,Precio,IdEstadoHabitacion,IdPiso,IdCategoria)
+values
+(
+RIGHT('000' + convert(varchar(max),(select isnull(max(ValorNumero),0) + 1 from HABITACION)),3),
+(select isnull(max(ValorNumero),0) + 1 from HABITACION),
+'WIFI + BAÑO + TV 4K + CABLE','120',1,3,
+(select top 1 IdCategoria from CATEGORIA where Descripcion = 'Matrimonial')
+)
+
+GO
+
+--REGISTRO EN TABLA HABITACION
+INSERT INTO HABITACION(Numero,Valornumero,Detalle,Precio,IdEstadoHabitacion,IdPiso,IdCategoria)
+values
+(
+RIGHT('000' + convert(varchar(max),(select isnull(max(ValorNumero),0) + 1 from HABITACION)),3),
+(select isnull(max(ValorNumero),0) + 1 from HABITACION),
+'WIFI + BAÑO + TV 4K + CABLE','120',1,3,
+(select top 1 IdCategoria from CATEGORIA where Descripcion = 'Matrimonial')
+)
+
+GO
+
+--REGISTRO EN TABLA HABITACION
+INSERT INTO HABITACION(Numero,Valornumero,Detalle,Precio,IdEstadoHabitacion,IdPiso,IdCategoria)
+values
+(
+RIGHT('000' + convert(varchar(max),(select isnull(max(ValorNumero),0) + 1 from HABITACION)),3),
+(select isnull(max(ValorNumero),0) + 1 from HABITACION),
+'WIFI + BAÑO + TV + CABLE','85',1,3,
+(select top 2 IdCategoria from CATEGORIA where Descripcion = 'Doble')
+)
+
+GO
+
+--REGISTRO EN TABLA HABITACION
+INSERT INTO HABITACION(Numero,Valornumero,Detalle,Precio,IdEstadoHabitacion,IdPiso,IdCategoria)
+values
+(
+RIGHT('000' + convert(varchar(max),(select isnull(max(ValorNumero),0) + 1 from HABITACION)),3),
+(select isnull(max(ValorNumero),0) + 1 from HABITACION),
+'WIFI + BAÑO + TV + CABLE','75',1,3,
+(select top 3 IdCategoria from CATEGORIA where Descripcion = 'Individual')
+)
+
+GO
+
+--('001','WIFI + BAÑO + TV + CABLE','70',1,1,3), --('Matrimonial'),('Doble'),('Individual')
+--('002','WIFI + BAÑO + TV + CABLE','80',1,1,2),
+--('003','BAÑO + TV + CABLE','60',1,1,3),
+--('004','WIFI + BAÑO + TV + CABLE','80',1,1,2),
+--('005','WIFI + BAÑO','50',1,1,3),
+
+--('006','WIFI + BAÑO + TV 4K + CABLE','80',1,2,3),
+--('007','WIFI + BAÑO + TV 4K + CABLE','90',1,2,2),
+--('008','WIFI + BAÑO + TV + CABLE','70',1,2,3),
+--('009','WIFI + BAÑO + TV + CABLE','80',1,2,2),
+--('010','WIFI + BAÑO + TV + CABLE','70',1,2,3),
+
+--('011','WIFI + BAÑO + TV 4K + CABLE','120',1,3,1),
+--('012','WIFI + BAÑO + TV 4K + CABLE','120',1,3,1),
+--('013','WIFI + BAÑO + TV 4K + CABLE','120',1,3,1),
+--('014','WIFI + BAÑO + TV + CABLE','85',1,3,2),
+--('015','WIFI + BAÑO + TV + CABLE','75',1,3,3)

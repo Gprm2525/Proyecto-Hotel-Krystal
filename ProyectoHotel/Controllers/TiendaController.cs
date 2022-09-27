@@ -42,6 +42,12 @@ namespace ProyectoHotel.Controllers
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
+        public JsonResult ModificarProducto(Producto objeto)
+        {
+            bool respuesta = ProductoLogica.Instancia.Modificar(objeto);
+            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
         public JsonResult EliminarProducto(int id)
         {
             bool respuesta = false;
