@@ -147,6 +147,15 @@ end
 
 GO
 
+--PROCEMIENTO PARA OBTENER PRODUCTO
+CREATE PROC usp_ObtenerProductos
+as
+begin
+ select IdProducto,Codigo,ValorCodigo,Nombre,Detalle,Precio,Cantidad
+end
+
+GO
+
 
 --PROCEDIMIENTO PARA GUARDAR PRODUCTO
 CREATE PROC sp_RegistrarProducto(

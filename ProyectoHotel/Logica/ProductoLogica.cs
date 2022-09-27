@@ -116,14 +116,14 @@ namespace ProyectoHotel.Logica
                         {
                             Lista.Add(new Producto()
                             {
-                                IdProducto = Convert.ToInt32(dr["IdProducto"]),
+                                IdProducto = Convert.ToInt32(dr["IdProducto"].ToString()),
                                 Codigo = dr["Codigo"].ToString(),
                                 ValorCodigo = Convert.ToInt32(dr["ValorCodigo"].ToString()),
                                 Nombre = dr["Nombre"].ToString(),
                                 Detalle = dr["Detalle"].ToString(),
                                 Precio = Convert.ToDecimal(dr["Precio"].ToString()),
                                 Cantidad = Convert.ToInt32(dr["Cantidad"].ToString()),
-                                Estado = Convert.ToBoolean(dr["Estado"])
+                                Estado = Convert.ToBoolean(dr["Estado"].ToString())
                             });
                         }
                     }

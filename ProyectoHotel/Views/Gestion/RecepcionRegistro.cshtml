@@ -50,31 +50,35 @@
 
                 <h5 class="card-title font-weight-bold text-primary">Detalle Cliente</h5>
                 <input type="hidden" id="txtidcliente" value="0" />
-                <div class="form-group mb-2">
-                    <label for="exampleFormControlInput1">Nro Documento:</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="txtdocumento">
-                        <div class="input-group-append">
-                            <button class="btn btn-success" id="btnbuscar" type="button">Buscar</button>
+                <div class="form-row">
+                    <div class="form-group col-md-6 mb-2">
+                        <label for="exampleFormControlInput1">Nro Documento:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="txtdocumento">
+                            <div class="input-group-append">
+                                <button class="btn btn-success" id="btnbuscar" type="button">Buscar</button>
+                            </div>
                         </div>
                     </div>
+                    <div class="form-group col-md-6 mb-2">
+                        <label for="exampleFormControlSelect1">Tipo Documento:</label>
+                        <select class="form-control" id="cbotipodocumento">
+                            <option value="DNI">DNI</option>
+                            <option value="RUC">RUC</option>
+                            <option value="Pasaporte">Pasaporte</option>
+                            <option value="Carnet Extranjeria">Carnet Extranjeria</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="form-group mb-2">
-                    <label for="exampleFormControlSelect1">Tipo Documento:</label>
-                    <select class="form-control" id="cbotipodocumento">
-                        <option value="DNI">DNI</option>
-                        <option value="RUC">RUC</option>
-                        <option value="Pasaporte">Pasaporte</option>
-                        <option value="Carnet Extranjeria">Carnet Extranjeria</option>
-                    </select>
-                </div>
-                <div class="form-group mb-2">
-                    <label for="exampleFormControlInput1">Nombres:</label>
-                    <input type="text" class="form-control" id="txtnombres">
-                </div>
-                <div class="form-group mb-2">
-                    <label for="exampleFormControlInput1">Apellidos:</label>
-                    <input type="text" class="form-control" id="txtapellidos">
+                <div class="form-row">
+                    <div class="form-group col-md-6 mb-2">
+                        <label for="exampleFormControlInput1">Nombres:</label>
+                        <input type="text" class="form-control" id="txtnombres">
+                    </div>
+                    <div class="form-group col-md-6 mb-2">
+                        <label for="exampleFormControlInput1">Apellidos:</label>
+                        <input type="text" class="form-control" id="txtapellidos">
+                    </div>
                 </div>
                 <div class="form-group mb-2">
                     <label for="exampleFormControlInput1">Correo:</label>
@@ -97,6 +101,7 @@
                     <div class="form-group col-md-6 mb-2">
                         <label for="inputEmail4">Precio:</label>
                         <input type="text" class="form-control" id="txtprecio" disabled="disabled" value="@Html.DisplayTextFor(model => model.Precio)">
+                        <input type="hidden" class="form-control" id="txtpreciobase" disabled="disabled" value="@Html.DisplayTextFor(model => model.Precio)">
                     </div>
                     <div class="form-group col-md-6 mb-2">
                         <label for="inputPassword4">Adelanto:</label>

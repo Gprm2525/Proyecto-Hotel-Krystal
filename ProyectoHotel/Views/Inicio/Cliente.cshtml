@@ -74,8 +74,9 @@
                         <div class="col-sm-10">
                             <select class="form-control form-control-sm model" id="cbotipodocumento" name="tipo">
                                 <option value="DNI">DNI</option>
-                                <option value="PASAPORTE">Pasaporte</option>
-                                <option value="CARNET EXTRANJERIA">Carnet Extranjeria</option>
+                                <option value="RUC">RUC</option>
+                                <option value="Pasaporte">Pasaporte</option>
+                                <option value="Carnet Extranjeria">Carnet Extranjeria</option>
                             </select>
                         </div>
                     </div>
@@ -172,10 +173,6 @@
                             return $("<button>").addClass("btn btn-primary btn-editar btn-sm").append(
                                 $("<i>").addClass("fas fa-pen")
                             ).attr({ "data-informacion": JSON.stringify(row) })[0].outerHTML
-                            //+
-                            //$("<button>").addClass("btn btn-danger btn-eliminar btn-sm ml-2").append(
-                            //    $("<i>").addClass("fas fa-trash")
-                            //).attr({ "data-informacion": JSON.stringify(row) })[0].outerHTML;
 
                         },
                         "orderable": false,

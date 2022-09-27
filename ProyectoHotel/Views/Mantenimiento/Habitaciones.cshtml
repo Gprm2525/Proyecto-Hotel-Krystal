@@ -7,7 +7,7 @@
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
-    <div class="card-header d-flex bg-primary">
+    <div class="card-header d-flex" style="background-color: #169b6b">
         <h6 class="m-0 font-weight-bold text-white">Lista de Habitaciones</h6>
         <button class="btn btn-success btn-sm ml-auto" type="button" onclick="abrirModal(null)">Crear Nuevo</button>
     </div>
@@ -67,102 +67,53 @@
             <div class="modal-body">
                 <input id="txtid" type="hidden" value="0" />
 
-                @*<form id="form">
-            <input id="txtid" class="model" value="0" type="hidden" />
-            <div class="form-group row">
-                <label for="txtnombre" class="col-sm-2 col-form-label col-form-label-sm">Numero</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control form-control-sm model" maxlength="100" id="txtnumero" name="numero" autocomplete="off">
-                </div>
-                <span class="error"></span>
-            </div>
-            <div class="form-group row">
-                <label for="txtdetalle" class="col-sm-2 col-form-label col-form-label-sm">Detalle</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control form-control-sm model" maxlength="100" id="txtdetalle" name="detalle" autocomplete="off">
-                </div>
-                <span class="error"></span>
-            </div>
-            <div class="form-group row">
-                <label for="txtprecio" class="col-sm-2 col-form-label col-form-label-sm">Precio (S/.)</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control form-control-sm model" maxlength="4" id="txtprecio" name="precio" autocomplete="off">
-                </div>
-                <span class="error"></span>
-            </div>
-            <div class="form-group row">
-                <label for="txtcategoria" class="col-sm-2 col-form-label col-form-label-sm">Categoria</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control form-control-sm model" maxlength="50" id="txtcategoria" name="categoria" autocomplete="off">
-                </div>
-                <span class="error"></span>
-            </div>
-            <div class="form-group row">
-                <label for="cbopiso" class="col-sm-2 col-form-label col-form-label-sm">Piso</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control form-control-sm model" maxlength="50" id="cbotpiso" name="piso" autocomplete="off">
-                </div>
-                <span class="error"></span>
-            </div>
+                <form id="formNivel">
+                    <div class="form-group row">
+                        <label for="txtnombre" class="col-sm-2 col-form-label col-form-label-sm">Numero</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control form-control-sm model" maxlength="100" id="txtnumero" name="numero" autocomplete="off">
+                        </div>
+                        <span class="error"></span>
+                    </div>
+                    <div class="form-group row">
+                        <label for="txtdetalle" class="col-sm-2 col-form-label col-form-label-sm">Detalle</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control form-control-sm model" maxlength="100" id="txtdetalle" name="detalle" autocomplete="off">
+                        </div>
+                        <span class="error"></span>
+                    </div>
+                    <div class="form-group row">
+                        <label for="txtprecio" class="col-sm-2 col-form-label col-form-label-sm">Precio (S/.)</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control form-control-sm model" maxlength="4" id="txtprecio" name="precio" autocomplete="off">
+                        </div>
+                        <span class="error"></span>
+                    </div>
+                    <div class="form-group row">
+                        <label for="cbocategoria" class="col-sm-2 col-form-label col-form-label-sm">Categoria</label>
+                        <div class="col-sm-10">
+                            <select class="form-control form-control-sm model" id="cbocategoria"></select>
+                        </div>
+                        <span class="error"></span>
+                    </div>
+                    <div class="form-group row">
+                        <label for="cbopiso" class="col-sm-2 col-form-label col-form-label-sm">Piso</label>
+                        <div class="col-sm-10">
+                            <select class="form-control form-control-sm model" id="cbopiso"></select>
+                        </div>
+                        <span class="error"></span>
+                    </div>
+                    <div class="form-group row">
+                        <label for="cboestado" class="col-sm-2 col-form-label col-form-label-sm">Estado</label>
+                        <div class="col-sm-10">
+                            <select class="form-control form-control-sm model" id="cboestado" name="activo">
+                                <option value="1">Activo</option>
+                                <option value="0">No Activo</option>
+                            </select>
+                        </div>
+                    </div>
 
-            <div class="form-group row">
-                <label for="cboEstado" class="col-sm-2 col-form-label col-form-label-sm">Estado</label>
-                <div class="col-sm-10">
-                    <select class="form-control form-control-sm model" id="cboEstado" name="activo">
-                        <option value="1">Activo</option>
-                        <option value="0">No Activo</option>
-                    </select>
-                </div>
-            </div>
-        </form>*@
-
-            <form id="formNivel">
-                <div class="form-group row">
-                    <label for="txtnombre" class="col-sm-2 col-form-label col-form-label-sm">Numero</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control form-control-sm model" maxlength="100" id="txtnumero" name="numero" autocomplete="off">
-                    </div>
-                    <span class="error"></span>
-                </div>
-                <div class="form-group row">
-                    <label for="txtdetalle" class="col-sm-2 col-form-label col-form-label-sm">Detalle</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control form-control-sm model" maxlength="100" id="txtdetalle" name="detalle" autocomplete="off">
-                    </div>
-                    <span class="error"></span>
-                </div>
-                <div class="form-group row">
-                    <label for="txtprecio" class="col-sm-2 col-form-label col-form-label-sm">Precio (S/.)</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control form-control-sm model" maxlength="4" id="txtprecio" name="precio" autocomplete="off">
-                    </div>
-                    <span class="error"></span>
-                </div>
-                <div class="form-group row">
-                    <label for="cbocategoria" class="col-sm-2 col-form-label col-form-label-sm">Categoria</label>
-                    <div class="col-sm-10">
-                        <select class="form-control" id="cbocategoria"></select>
-                    </div>
-                    <span class="error"></span>
-                </div>
-                <div class="form-group row">
-                    <label for="cbopiso" class="col-sm-2 col-form-label col-form-label-sm">Piso</label>
-                    <div class="col-sm-10">
-                        <select class="form-control" id="cbopiso"></select>
-                    </div>
-                    <span class="error"></span>
-                </div>
-            <div class="form-group row">
-                <label for="cboEstado" class="col-sm-2 col-form-label col-form-label-sm">Estado</label>
-                <div class="col-sm-10">
-                    <select class="form-control form-control-sm model" id="cboEstado" name="activo">
-                        <option value="1">Activo</option>
-                        <option value="0">No Activo</option>
-                    </select>
-                </div>
-            </div>
-
-            </form>
+                </form>
 
             </div>
             <div class="modal-footer">
@@ -172,8 +123,6 @@
         </div>
     </div>
 </div>
-
-
 
 @section scripts{
 
@@ -223,7 +172,7 @@
                 "columns": [
                     { "data": "Numero" },
                     { "data": "Detalle" },
-                    { "data": "Precio" },
+                    { "data": "Precio", render: $.fn.dataTable.render.number(',', '.', 2, 'S/ ') },
                     {
                         "data": "oCategoria", render: function (data) {
                             return data.Descripcion
@@ -237,7 +186,7 @@
                     {
                         "data": "Estado", "render": function (data) {
                             if (data) {
-                                return '<span class="badge badge-success p-2">Activo</span>'
+                                return '<span class="badge badge-info p-2">Activo</span>'
                             } else {
                                 return '<span class="badge badge-danger p-2">No Activo</span>'
                             }
@@ -277,23 +226,28 @@
 
         function abrirModal(json) {
             $("#txtid").val(0);
-            $("#txtnumero").val("AUTOGENERADO");
-            $("#txtdetalle").val("");
-            $("#txtprecio").val("");
-            $("#cbocategoria").val($("#cbocategoria option:first").val());
-            $("#cbopiso").val($("#cbopiso option:first").val());
-            $("#cboEstado").val(1);
-            $("#txtnumero").prop("disabled", true);
 
             if (json != null) {
-
                 $("#txtid").val(json.IdHabitacion);
+
                 $("#txtnumero").val(json.Numero);
                 $("#txtdetalle").val(json.Detalle);
                 $("#txtprecio").val(json.Precio);
                 $("#cbocategoria").val(json.oCategoria.IdCategoria);
                 $("#cbopiso").val(json.oPiso.IdPiso);
                 $("#cboEstado").val(json.Estado == true ? 1 : 0);
+
+                $("#txtnumero").prop("disabled", true)
+
+            }
+            else {
+                $("#txtnumero").val("AUTOGENERADO");
+                $("#txtnumero").prop("disabled", true)
+                $("#txtdetalle").val("");
+                $("#txtprecio").val("");
+                $("#cbocategoria").val($("#cbocategoria option:first").val());
+                $("#cbopiso").val($("#cbopiso option:first").val());
+                $("#cboEstado").val(1);
             }
 
             $('#FormModal').modal('show');
@@ -313,7 +267,8 @@
                     if (data.resultado) {
                         tabladata.ajax.reload();
                     } else {
-                        alert("No se pudo eliminar")
+                        /*alert("No se pudo eliminar")*/
+                        Swal.fire('No se pudo eliminar', 'error');
                     }
                 },
                 error: function (error) {
@@ -328,15 +283,16 @@
         function Guardar() {
             var request = {
                 objeto: {
-                    IdHabitacion: $("#txtid").val(),
+                    IdHabitacion: parseInt($("#txtid").val()),
                     Numero: $("#txtnumero").val(),
-                    Detalle: $("#txtdetalle").val(),
+                    Detalle: $("#txtdetalle").val().toLowerCase(),
                     PrecioTexto: $("#txtprecio").val(),
                     oCategoria: { IdCategoria: $("#cbocategoria option:selected").val()} ,
                     oPiso: { IdPiso: $("#cbopiso option:selected").val() },
                     Estado: parseInt($("#cboEstado").val()) == 1 ? true : false
                 }
             }
+            console.log()
 
             jQuery.ajax({
                 url: '@Url.Action("GuardarHabitacion", "Mantenimiento")',
@@ -349,8 +305,10 @@
                     if (data.resultado) {
                         tabladata.ajax.reload();
                         $('#FormModal').modal('hide');
+                        swal("Exito!", "Registro guardado exitosamente!", "success");
                     } else {
-                        alert("No se pudo guardar los cambios")
+                        /*alert("No se pudo guardar los cambios")*/
+                        swal("Error!", "No se pudo guardar, verifique los campos en blanco o si el campo que desea ingresar es repetido!", "warning");
                     }
                 },
                 error: function (error) {
@@ -362,6 +320,19 @@
             });
 
         }
+
+        $("#txtprecio").on({
+            "focus": function (event) {
+                $(event.target).select();
+            },
+            "keyup": function (event) {
+                $(event.target).val(function (index, value) {
+                    return value.replace(/\D/g, "")
+                        .replace(/([0-9])([0-9]{2})$/, '$1.$2')
+                        .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
+                });
+            }
+        });
 
     </script>
 

@@ -122,3 +122,15 @@ IdProducto int references PRODUCTO(IdProducto),
 Cantidad int,
 SubTotal decimal(10,2)
 )
+
+go
+
+create table PRERECEPCION(
+IdEvento int primary key identity,
+Tema varchar(100) not null,
+Descripcion varchar(200) not null,
+FechaEntrada datetime default getdate(),
+FechaSalida datetime,
+ColorTema varchar(100) not null,
+IsFullDay bit
+)

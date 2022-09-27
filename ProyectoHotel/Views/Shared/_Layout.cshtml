@@ -45,7 +45,8 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
                 <a class="nav-link" href="@Url.Action("Index", "Inicio")">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i @*class="fas fa-fw fa-tachometer-alt"*@></i>
+                    <img src="~/Imagenes/control_panel.png" class="img-fluid rounded-circle mr-0 " />
                     <span>Principal</span>
                 </a>
             </li>
@@ -53,7 +54,8 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-concierge-bell"></i>
+                    <i @*class="fas fa-concierge-bell"*@></i>
+                    <img src="~/Imagenes/gestion.png" class="img-fluid rounded-circle mr-0 " />
                     <span>Gestion</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -71,7 +73,8 @@
                     <li class="nav-item">
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                            aria-expanded="true" aria-controls="collapseUtilities">
-                            <i class="fas fa-fax"></i>
+                            <i @*class="fas fa-fax"*@></i>
+                            <img src="~/Imagenes/tienda.png" class="img-fluid rounded-circle mr-0 " />
                             <span>Tienda</span>
                         </a>
                         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
@@ -91,7 +94,8 @@
                     <li class="nav-item">
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseamantenimiento"
                            aria-expanded="true" aria-controls="collapseamantenimiento">
-                            <i class="fas fa-fw fa-wrench"></i>
+                            <i @*class="fas fa-fw fa-wrench"*@></i>
+                            <img src="~/Imagenes/mantenimiento.png" class="img-fluid rounded-circle mr-0 " />
                             <span>Mantenimiento</span>
                         </a>
                         <div id="collapseamantenimiento" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -112,7 +116,8 @@
                     <li class="nav-item">
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReporte"
                            aria-expanded="true" aria-controls="collapseReporte">
-                            <i class="fas fa-chart-line"></i>
+                            <i @*class="fas fa-chart-line"*@></i>
+                            <img src="~/Imagenes/reporte.png" class="img-fluid rounded-circle mr-0 " />
                             <span>Reportes</span>
                         </a>
                         <div id="collapseReporte" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -131,7 +136,8 @@
                     <!-- Nav Item - Charts -->
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("Usuario","Inicio")">
-                            <i class="fas fa-user-shield"></i>
+                            <i @*class="fas fa-user-shield"*@></i>
+                            <img src="~/Imagenes/usuario.png" class="img-fluid rounded-circle mr-0 " />
                             <span>Usuarios</span>
                         </a>
                     </li>
@@ -142,7 +148,8 @@
             <!-- Nav Item - Charts -->
             <li class="nav-item">
                 <a class="nav-link" href="@Url.Action("Cliente","Inicio")">
-                    <i class="fas fa-user-friends"></i>
+                    <i @*class="fas fa-user-friends"*@></i>
+                    <img src="~/Imagenes/cliente.png" class="img-fluid rounded-circle mr-0 " />
                     <span>Clientes</span>
                 </a>
             </li>
@@ -173,7 +180,8 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">@(objeto.Nombre + " " + objeto.Apellido )</span>
-                                <i class="fas fa-user-shield" style="font-size:25px;font-weight:bold"></i>
+                                @*<i class="fas fa-user-lock" style="font-size:25px;font-weight:bold"></i>*@
+                                <img src="~/Imagenes/user.png" class="img-fluid rounded-circle mr-2 " />
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -236,46 +244,3 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
-
-<script>
-    //Modal de Saludo//
-    @*Swal.fire({
-        title: 'Bienvenido @(objeto.Nombre + " " + objeto.Apellido)',
-        icon: 'success',
-        /*padding: '1rem',*/
-        /*buttons: false,*/
-        backdrop: true,
-        timer: 2500,
-        timerProgressBar: true,
-        didOpen: undefined
-    });*@
-
-    Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Bienvenido' + '<br>' + '@(objeto.Nombre + " " + objeto.Apellido)',
-        showConfirmButton: false,
-        timer: 2500,
-        timerProgressBar: true
-    })
-
-    //$(document).ready(function () {
-
-    //    var swal_alert = localStorage.getItem("alert");
-
-    //    if (swal_alert != 1) {
-    //        swal({
-    //            title: "District Closed",
-    //            text: "Severe snow is causing major accidents and is unsafe for our students and staff. The district is closed including schools & offices, updates will be posted here. This popup closes fifteen (15) seconds after loading the page or clicking the status button.",
-    //            timer: 15000,
-    //            type: "error",
-    //            showConfirmButton: false
-    //        });
-    //    }
-
-    //    localStorage.setItem("alert", "1");
-
-    //});
-
-
-</script>
