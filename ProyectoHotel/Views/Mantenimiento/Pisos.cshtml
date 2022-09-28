@@ -216,7 +216,7 @@
             var request = {
                 objeto: {
                     IdPiso: $("#txtid").val(),
-                    Descripcion: $("#txtdescripcion").val().toLowerCase(),
+                    Descripcion: $("#txtdescripcion").val().substr(0, 1).toUpperCase() + $("#txtdescripcion").val().substr(1),
                     Estado: parseInt($("#cboEstado").val()) == 1 ? true : false
                 }
             }
