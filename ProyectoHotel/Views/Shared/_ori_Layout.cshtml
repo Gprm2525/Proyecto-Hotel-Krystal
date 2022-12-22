@@ -179,13 +179,9 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline font-weight-bold text-dark small">@(objeto.Nombre + " " + objeto.Apellido)</span>
-
-                                <div class="topbar-divider d-none d-sm-block"></div>
-
-                                <span class="mr-2 d-none d-lg-inline font-weight-bold text-dark small">@(objeto.Correo)</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">@(objeto.Nombre + " " + objeto.Apellido + objeto.Correo )</span>
                                 @*<i class="fas fa-user-lock" style="font-size:25px;font-weight:bold"></i>*@
-                                <img src="~/Imagenes/user.png" class="img-fluid rounded-circle mr-2 " height="45px" width="45px" />
+                                <img src="~/Imagenes/user.png" class="img-fluid rounded-circle mr-2 " />
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

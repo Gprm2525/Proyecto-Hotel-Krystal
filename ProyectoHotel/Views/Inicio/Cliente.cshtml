@@ -266,9 +266,9 @@
                     IdPersona: $("#txtid").val(),
                     TipoDocumento: $("#cbotipodocumento").val(),
                     Documento: $("#txtdocumento").val(),
-                    Nombre: $("#txtnombre").val().toLowerCase(),
-                    Apellido: $("#txtapellido").val().toLowerCase(),
-                    Correo: $("#txtcorreo").val().toLowerCase(),
+                    Nombre: $("#txtnombre").val().substr(0, 1).toUpperCase() + $("#txtnombre").val().substr(1),
+                    Apellido: $("#txtapellido").val().substr(0, 1).toUpperCase() + $("#txtapellido").val().substr(1),
+                    Correo: $("#txtcorreo").val().substr(0, 1).toUpperCase() + $("#txtcorreo").val().substr(1),
                     Clave: "",
                     oTipoPersona: { IdTipoPersona: 3 },
                     Estado: parseInt($("#cboEstado").val()) == 1 ? true : false
